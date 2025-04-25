@@ -15,14 +15,54 @@ Else
 6.	Return 0
  
 Program:
-
-//type your code here
+#include<stdio.h>
+struct intg
+{
+    int a;
+    char b[20];
+};
+int main()
+{
+    struct intg s;
+    scanf("%d",&s.a);
+    scanf("%s",s.b);
+    
+   if(s.a>18)
+   {
+       printf("Age:%d\n",s.a);
+       printf("Name:%svaccine:%d\n",s.b,s.a);
+       printf("eligibility:yes");
+   }
+   else
+   {
+       printf("Age:%d\n",s.a);
+       
+       printf("Name:%s",s.b);
+       printf("vaccine:%d\n",s.a);
+       printf("eligibility:no");
+   }
+ return 0;
+}
 
 
 Output:
-
-//paste your output here
-
+	Input	Expected	Got	
+21
+ramesh
+Age:21
+Name:rameshvaccine:21
+eligibility:yes
+Age:21
+Name:rameshvaccine:21
+eligibility:yes
+18
+shiva
+Age:18
+Name:shivavaccine:18
+eligibility:no
+Age:18
+Name:shivavaccine:18
+eligibility:no
 
 Result:
 Thus, the program is verified successfully. 
@@ -44,7 +84,28 @@ Algorithm:
  
 Program:
 
-//type your code here
+#include <stdio.h>
+
+struct num{
+    int a;
+    int b;
+    int res;
+}n;
+
+int add(struct num n);
+
+int main()
+{
+    scanf("%d %d",&n.a,&n.b);
+    n.res = add(n);
+    printf("%d",n.res);
+}
+int add(struct num n)
+{
+    int ans;
+    ans = n.a + n.b;
+    return ans;
+}
 
 
 
@@ -52,9 +113,19 @@ Program:
 Output:
 
 
-//paste your output here
-
-
+	Input	Expected	Got	
+10
+20
+30
+30
+50
+-20
+30
+30
+-20
+-30
+-50
+-50
 
 
 Result:
@@ -86,7 +157,29 @@ Use scanf to input the file name into the name array.
  
 Program:
 
-//type your code here
+#include <stdio.h>
+int main()
+{
+   char name[50];
+   scanf(" %s",name);
+   FILE *fptr;
+   fptr = (fopen("name","w"));
+   if(fptr == NULL)
+   {
+       printf("Error!");
+       //exit(1);
+   }
+
+   else
+   {
+      printf("%s File Created Successfully\n",name);
+      printf("%s File Opened\n",name);
+   }
+
+   fclose(fptr);
+   printf("%s File Closed\n",name);
+   return 0;
+}
 
 
 
@@ -95,7 +188,28 @@ Output:
 
 
 //paste your output here
-
+	Input	Expected	Got	
+Employee.txt
+Employee.txt File Created Successfully
+Employee.txt File Opened
+Employee.txt File Closed
+Employee.txt File Created Successfully
+Employee.txt File Opened
+Employee.txt File Closed
+Student.txt
+Student.txt File Created Successfully
+Student.txt File Opened
+Student.txt File Closed
+Student.txt File Created Successfully
+Student.txt File Opened
+Student.txt File Closed
+Sample.c
+Sample.c File Created Successfully
+Sample.c File Opened
+Sample.c File Closed
+Sample.c File Created Successfully
+Sample.c File Opened
+Sample.c File Closed
 
 
 
@@ -134,7 +248,36 @@ Use scanf to input the file name into the name array and the number of strings i
 Program:
 
 //type your code here
+#include <stdio.h>
+int main()
+{
+   char name[50];
+   int i,num;
+   float f;
 
+   scanf("%s", name);
+   scanf("%d", &num);
+   
+   FILE*fptr;
+   fptr = (fopen(name, "w"));
+   if(fptr == NULL)
+   {
+       printf("Error!");
+       //exit(1);
+   }
+   //printf("%p Opened\n",fptr);
+   printf("%s Opened\n",name);
+   for(i = 0; i < num; ++i)
+   {
+      
+      scanf("%f", &f);
+
+      fprintf(fptr,"%f \n", f);
+   }
+   printf("Data added Successfully");
+   fclose(fptr);
+   return 0;
+}
 
 
 
@@ -142,6 +285,24 @@ Output:
 
 
 //paste your output here
+Input	Expected	Got	
+Sample.txt
+2
+aaa
+bbb
+Sample.txt Opened
+Data added Successfully
+Sample.txt Opened
+Data added Successfully
+Rawee.txt
+3
+RAWEE
+KUMAR
+CHARVIQ
+Rawee.txt Opened
+Data added Successfully
+Rawee.txt Opened
+Data added Successfully
 
 
 
@@ -188,6 +349,54 @@ Algorithm:
 Program:
 
 //type your code here
+#include <stdio.h>
+
+// Defining the structure
+struct Student {
+    int admission_no;
+    char student_name[20];
+    char course_type[40];
+    char course_name[100];
+    int tuition_fee;
+    
+    struct Date_of_admission {
+        int dd;
+        int mm;
+        int yyyy;
+    } doj;
+};
+
+int main() {
+    struct Student e1;
+
+    
+    scanf("%d", &e1.admission_no);
+
+   
+    scanf("%s", e1.student_name);
+
+   
+    scanf("%s", e1.course_name);
+
+   
+    scanf("%s", e1.course_type);
+
+   
+    scanf("%d", &e1.tuition_fee);
+
+   
+    scanf("%d %d %d", &e1.doj.dd, &e1.doj.mm, &e1.doj.yyyy);
+
+   
+    printf("Admission Number : %d\n", e1.admission_no);
+    printf("Student name : %s\n", e1.student_name);
+    printf("Course Type : %s\n", e1.course_type);
+    printf("Date of admission (dd/mm/yyyy) : %d/%d/%d\n", e1.doj.dd, e1.doj.mm, e1.doj.yyyy);
+    printf("Course Name :%s\n", e1.course_name);
+    printf("Tution Fee:%d\n", e1.tuition_fee);
+
+    return 0;
+}
 
 
 
@@ -197,7 +406,47 @@ Output:
 
 //paste your output here
 
-
+Input	Expected	Got	
+120365
+shanker
+BE-CSE
+undergraduate
+50000
+12
+03
+2021
+Admission Number : 120365
+Student name : shanker
+Course Type : undergraduate
+Date of admission (dd/mm/yyyy) : 12/3/2021
+Course Name :BE-CSE
+Tution Fee:50000
+Admission Number : 120365
+Student name : shanker
+Course Type : undergraduate
+Date of admission (dd/mm/yyyy) : 12/3/2021
+Course Name :BE-CSE
+Tution Fee:50000
+145026
+Reena
+BE-ECE
+Undergraduate
+60000
+15
+09
+2021
+Admission Number : 145026
+Student name : Reena
+Course Type : Undergraduate
+Date of admission (dd/mm/yyyy) : 15/9/2021
+Course Name :BE-ECE
+Tution Fee:60000
+Admission Number : 145026
+Student name : Reena
+Course Type : Undergraduate
+Date of admission (dd/mm/yyyy) : 15/9/2021
+Course Name :BE-ECE
+Tution Fee:60000
 
 
 
