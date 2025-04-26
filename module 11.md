@@ -13,9 +13,41 @@ Algorithm:
  
 Program:
 //type your code here
+#include <stdio.h>
+int max(int x,int y)
+{
+    return (x>y)?x:y;
+}
+int maxfour(int a,int b,int c,int d)
+{
+    return max(max(a,b),max(b,c));
+}
+int main(){
+    int a,b,c,d;
+    scanf("%d",&a);
+    scanf("%d",&b);
+    scanf("%d",&c);
+    scanf("%d",&d);
+    printf("%d",maxfour(a,b,c,d));
+    return 0;
+}
 
 Output:
 //paste your output here
+Input	Expected	Got	
+17
+13
+3
+15
+17
+17
+100
+5
+15
+48
+100
+100
+
 
 Result:
 Thus, the program  that create a function to find the greatest number is verified successfully.
@@ -37,9 +69,60 @@ Algorithm:
  
 Program:
 //type your code here
+#include<stdio.h>
+int max(int n,int k)
+{
+    int maxand=0;
+    int maxor=0;
+    int maxxor=0;
+    for(int i=1;i<=n;i++)
+    {
+        for(int j=i+1;j<=n;j++)
+        {
+            int andval=i & j;
+            int orval=i | j;
+            int xorval=i ^ j;
+            if(andval<k && andval>maxand) maxand=andval;
+            if(orval<k && orval>maxor) maxor=orval;
+            if(xorval<k && xorval>maxxor) maxxor=xorval;
+        }
+    }
+    printf("%d\n%d\n%d\n",maxand,maxor,maxxor);
+    return 0;
+}
+int main()
+{
+    int n,k;
+    scanf("%d %d",&n,&k);
+    max(n,k);
+    return 0;
+}
 
 Output:
 //paste your output here
+Input	Expected	Got	
+7 4
+3
+3
+3
+3
+3
+3
+75 4
+3
+3
+3
+3
+3
+3
+22 3
+2
+0
+2
+2
+0
+2
+
 
 Result:
 Thus, the program to print the maximum values for the AND, OR and XOR comparisons
@@ -60,11 +143,78 @@ Algorithm:
  
 Program:
 //type your code here
+#include <stdio.h>
+#include <stdlib.h>
+
+int** tb;
+int* tbs;
+
+int main() {
+    int ts;
+    scanf("%d", &ts);
+
+    // Allocate memory for array of pointers (shelves)
+    tb = malloc(ts * sizeof(int*));
+    tbs = malloc(ts * sizeof(int));
+
+    for (int i = 0; i < ts; i++) {
+        tb[i] = NULL; // Initially no books
+        tbs[i] = 0; // Book count per shelf
+    }
+
+    int tq;
+    scanf("%d", &tq);
+
+    while (tq--) {
+        int typeq;
+        scanf("%d", &typeq);
+
+        if (typeq == 1) {
+            int x, y;
+            scanf("%d %d", &x, &y);
+
+            int count = tbs[x];
+            // Reallocate shelf x to add one more book
+            tb[x] = realloc(tb[x], (count + 1) * sizeof(int));
+            tb[x][count] = y; // Insert book with y pages
+            tbs[x]++; // Increase book count
+
+        } else if (typeq == 2) {
+            int x, y;
+            scanf("%d %d", &x, &y);
+            printf("%d\n", tb[x][y]);
+
+        } else if (typeq == 3) {
+            int x;
+            scanf("%d", &x);
+            printf("%d\n", tbs[x]);
+        }
+    }
+
+    // Free allocated memory
+    for (int i = 0; i < ts; i++) {
+        free(tb[i]);
+    }
+    free(tb);
+    free(tbs);
+
+    return 0;
+}
 
 Output:
 //paste your output here
-
-
+	Input	Expected	Got	
+5
+5
+1 0 15
+1 0 20
+1 2 78
+2 2 0
+3 0
+78
+2
+78
+2
 Result:
 Thus, the program to write the logic for the requests is verified successfully.
 
@@ -87,11 +237,44 @@ Algorithm:
 
 Program:
 //type your code here
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);  
+    int *arr = (int *)malloc(n * sizeof(int));
+    if (arr == NULL) {
+        printf("Memory allocation failed\n");
+        return 1;  
+    }
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += arr[i];
+    }
+    printf("%d\n", sum);
+    free(arr);
+
+    return 0;
+}
+
 
 Output:
 //paste your output here
 
- 
+ Input	Expected	Got	
+8
+15 5 16 15 17 11 5 11
+95
+95
+7
+1 13 15 20 12 13 2
+76
+76
+
 
 
 Result:
@@ -121,9 +304,43 @@ o	If a character is not a space, it may belong to a word. If it's the first non-
 
 Program:
 //type your code here
+#include <stdio.h>
+
+int main() {
+    char sentence[1000];
+    int i, words = 0;
+
+    printf("Enter a sentence: ");
+    fgets(sentence, sizeof(sentence), stdin);
+
+    for (i = 0; sentence[i] != '\0'; i++) {
+        if ((sentence[i] == ' ' || sentence[i] == '\n') && (i > 0 && sentence[i-1] != ' ')) {
+            words++;
+        }
+    }
+
+    if (sentence[0] != ' ' && sentence[0] != '\n') {
+        words++;
+    }
+
+    printf("Number of words: %d\n", words);
+
+    return 0;
+}
+
 
 Output:
 //paste your output here
+
+Enter a sentence: Hello World
+Number of words: 2
+
+Enter a sentence: This is a simple C program
+Number of words: 6
+
+Enter a sentence:   Count    the    words    correctly
+Number of words: 4
+
 
 
 
