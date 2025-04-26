@@ -14,10 +14,56 @@ Algorithm:
 Program:
 
 //type your code here
+char stack[100];
+int top;
+void display()
+{
+    
+    int i;
+    for(i=top;i>=0;i--)
+    {
+        printf("%c\n",stack[i]);
+    }
+}
 
 Output:
 
 //paste your output here
+Test	Expected	Got	
+top=-1;
+push('A');
+push('B');
+push('C');
+display();
+C
+B
+A
+C
+B
+A
+top=-1;
+push('a');
+push('e');
+push('i');
+display();
+i
+e
+a
+i
+e
+a
+top=-1;
+push('X');
+push('Y');
+push('Z');
+display();
+Z
+Y
+X
+Z
+Y
+X
+
 
 
 
@@ -37,10 +83,50 @@ Algorithm:
 Program:
 
 //type your code here
+float stack[100];
+int size=3,top=-1;
+void push (float data)
+{
+    stack[++top]=data;
+}
 
 Output:
 
 //paste your output here
+Test	Expected	Got	
+top=-1;
+push(10.5);
+push(20.5);
+push(30.5);
+display();
+30.5
+20.5
+10.5
+30.5
+20.5
+10.5
+top=-1;
+push(100.1);
+push(200.1);
+push(300.1);
+display();
+300.1
+200.1
+100.1
+300.1
+200.1
+100.1
+top=-1;
+push(5.5);
+push(6.5);
+push(7.5);
+display();
+7.5
+6.5
+5.5
+7.5
+6.5
+5.5
 
 
 
@@ -63,10 +149,49 @@ Algorithm:
 Program:
 
 //type your code here
+float queue[50];
+int front,rear;
+
+void display()
+{
+    if(front==-1 || front>rear)
+    {
+        printf("No elements to display\n");
+    }
+    else
+    {
+        for(int i=front;i<=rear;i++)
+        {
+            printf("%.1f ",queue[i]);
+        }
+    }
+}
 
 Output:
 
 //paste your output here
+Test	Expected	Got	
+rear=-1;
+front=-1;
+enqueue(100.5);
+enqueue(200.5);
+enqueue(300.5);
+display();
+100.5 200.5 300.5
+100.5 200.5 300.5
+rear=-1;
+front=-1;
+enqueue(1.1);
+enqueue(2.2);
+enqueue(3.3);
+display();
+1.1 2.2 3.3
+1.1 2.2 3.3
+rear=-1;
+front=-1;
+display();
+No elements to display
+No elements to display
 
 
 Result:
@@ -87,10 +212,55 @@ Algorithm:
 Program:
 
 //type your code here
+char queue[50];
+int front,rear;
+int size=3;
+void enqueue(char data)
+{
+    if(rear<size)
+    {
+        if(front==-1)
+        {
+            front=0;
+        }
+        rear+=1;
+        queue[rear]=data;
+    }
+    
+}
+
 
 Output:
 
 //paste your output here
+Test	Expected	Got	
+rear=-1; front=-1;
+enqueue('A');
+enqueue('B');
+enqueue('C');
+display();
+A
+B
+C
+A
+B
+C
+rear=-1; front=-1;
+enqueue('x');
+enqueue('y');
+enqueue('z');
+display();
+x
+y
+z
+x
+y
+z
+rear=-1; front=-1;
+display();
+no elements to display
+no elements to display
+
 
 Result:
 Thus, the program to insert elements in queue using array is verified successfully.
@@ -122,10 +292,49 @@ o	After deletion, check if the front pointer has passed the rear pointer (front 
 Program:
 
 //type your code here
+int front,rear;
+void dequeue()
+{
+    if(front==-1 || front>rear)
+    {
+        printf("c");
+    }
+    else
+    {
+        front++;
+    }
+}
 
 Output:
 
 //paste your output here
+Test	Expected	Got	
+enqueue(100);
+enqueue(200);
+enqueue(300);
+display();
+dequeue();
+display();
+100 200 300 200 300
+100 200 300 200 300
+rear=-1;
+front=-1;
+enqueue(5);
+enqueue(50);
+enqueue(500);
+display();
+dequeue();
+display();
+5 50 500 50 500
+5 50 500 50 500
+rear=-1;
+front=-1;
+enqueue(30);
+display();
+dequeue();
+display();
+30 No elements to display
+30 No elements to display
 
 
 Result:
