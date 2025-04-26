@@ -11,11 +11,67 @@ Algorithm:
 Program:
 
 //type your code here
+struct Node{
+    char data; 
+    struct Node *next;
+};
+struct Node *head;
+void search(char data)
+{
+    struct Node *temp;
+    int i=0,flag=0;
+    temp=head;
+    if(temp==NULL)
+    {
+        printf("Empty list\n");
+    }
+    else
+    {
+        while(temp!=NULL)
+        {
+            i++;
+            if(temp->data==data)
+            {
+                flag=1;
+                break;
+            }
+            temp=temp->next;
+        }
+        if(flag==1)
+        {
+            printf("item %c found at location %d\n",data,i);
+        }
+        else
+        {
+            printf("Item not found\n");
+        }
+    }
+}
 
 Output:
 
 //paste your output here
-
+Test	Expected	Got	
+head = NULL;
+insert('a');
+insert('b');
+insert('c');
+search('a');
+item a found at location 1
+item a found at location 1
+head = NULL;
+insert('X');
+insert('Y');
+insert('Z');
+search('Z');
+item Z found at location 3
+item Z found at location 3
+head = NULL;
+insert('A');
+insert('B');
+search('F');
+Item not found
+Item not found
 
 
 Result:
@@ -35,10 +91,56 @@ Algorithm:
 Program:
 
 //type your code here
+struct Node{
+    char  data; 
+    struct Node *next;
+}*head;
+void insert(char data)
+{
+    struct Node *x=(struct Node *)malloc(sizeof(struct Node));
+    struct Node *t=head;
+    x->data=data;
+    x->next=NULL;
+    if(t==NULL)
+    {
+        head=x;
+        return;
+    }
+    else
+    {
+        while(t->next!=NULL)
+        {
+            t=t->next;
+        }
+        t->next=x;
+    }
+}
 
 Output:
 
 //paste your output here
+Test	Expected	Got	
+head = NULL;
+insert('A');
+insert('B');
+insert('C');
+display();
+A B C
+A B C
+head = NULL;
+insert('x');
+insert('y');
+insert('z');
+display();
+x y z
+x y z
+head = NULL;
+insert('@');
+insert('#');
+insert('$');
+display();
+@ # $
+@ # $
 
  
 Result:
@@ -59,10 +161,57 @@ Algorithm:
 Program:
 
 //type your code here
+struct Node
+{
+    struct Node *prev;
+    struct Node *next;
+    float data;
+}*head;
+
+void display()
+{
+    struct Node *ptr;
+    ptr = head;
+    while(ptr!=NULL){
+        printf("%.2f\n",ptr->data);
+        ptr=ptr->next;
+    }
+}
 
 Output:
 
 //paste your output here
+Test	Expected	Got	
+head = NULL;
+insert(10.1);
+insert(20.2);
+insert(30.3);
+display();
+10.10
+20.20
+30.30
+10.10
+20.20
+30.30
+head = NULL;
+insert(100.5);
+insert(200.5);
+insert(300.5);
+display();
+100.50
+200.50
+300.50
+100.50
+200.50
+300.50
+head = NULL;
+insert(0);
+insert(50.55);
+display();
+0.00
+50.55
+0.00
+50.55
 
 
 Result:
@@ -84,10 +233,70 @@ Algorithm:
 Program:
 
 //type your code here
+struct Node
+{
+    struct Node *prev;
+    struct Node *next;
+    int data;
+};
+struct Node *head;
+void insert(int data)
+{
+    struct Node *temp;
+    struct Node *newnode;
+    temp=head;
+    newnode=(struct Node*)malloc(sizeof(struct Node));
+    newnode->data=data;
+    if(head==0)
+    {
+        newnode->prev=0;
+        newnode->next=0;
+        head=newnode;
+    }
+    else
+    {
+        temp=head;
+        while(temp->next!=0)
+        {
+            temp=temp->next;
+        }
+        temp->next=newnode;
+        newnode->prev=temp;
+        newnode->next=0;
+    }
+}
 
 Output:
 
 //paste your output here
+Test	Expected	Got	
+head = NULL;
+insert(10);
+insert(20);
+insert(30);
+display();
+10
+20
+30
+10
+20
+30
+head = NULL;
+insert(100);
+insert(200);
+insert(300);
+display();
+100
+200
+300
+100
+200
+300
+head = NULL;
+insert(5);
+display();
+5
+5
 
 
 Result:
@@ -126,11 +335,63 @@ o	If the element is not found in any node, print a message indicating the elemen
 Program:
 
 //type your code here
+struct Node{
+    int data; 
+    struct Node *next;
+}*head;
+void delete()
+{
+    if(head==NULL)
+    {
+        printf("List is empty");
+        return;
+    }
+    printf("Node deleted from the begining ...\n");
+    struct Node *temp=head;
+    head=head->next;
+    
+    free(temp);
+    
+    
+}
 
 Output:
 
 //paste your output here
-
+Test	Expected	Got	
+head = NULL;
+insert('a');
+insert('b');
+insert('c');
+display();
+delete();
+display();
+a b c Node deleted from the begining ...
+b c
+a b c Node deleted from the begining ...
+b c
+head = NULL;
+insert('X');
+insert('Y');
+insert('Z');
+display();
+delete();
+display();
+X Y Z Node deleted from the begining ...
+Y Z
+X Y Z Node deleted from the begining ...
+Y Z
+head = NULL;
+insert('g');
+display();
+delete();
+display();
+delete();
+display();
+g Node deleted from the begining ...
+List is empty
+g Node deleted from the begining ...
+List is empty
 
 
 
