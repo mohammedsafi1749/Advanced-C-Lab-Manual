@@ -16,10 +16,52 @@ Algorithm:
 Program:
 
 //type your code here
+struct Node   
+{  
+float data;  
+struct Node *next;  
+}*head;  
+void display()  
+{  
+    struct Node *temp;
+    temp=head;
+    while(temp!=NULL){
+        printf("%.3f\n",temp->data);
+        temp=temp->next;
+    }
+}
 
 Output:
 
 //paste your output here
+Test	Expected	Got	
+head=NULL;
+push(10.10);
+push(11.11);
+push(12.12);
+display();
+12.120
+11.110
+10.100
+12.120
+11.110
+10.100
+head=NULL;
+push(101.11);
+push(102.12);
+push(103.13);
+display();
+103.130
+102.120
+101.110
+103.130
+102.120
+101.110
+head=NULL;
+push(0.0);
+display();
+0.000
+0.000
 
 
 Result:
@@ -41,11 +83,53 @@ Algorithm:
 Program:
 
 //type your code here
+struct Node   
+{  
+float data;  
+struct Node *next;  
+}*head;  
+void pop()  
+{ 
+    if(head==NULL){
+        printf("stack is empty");
+    }
+    else{
+        head=head->next;
+    }
+}
 
 Output:
 
 //paste your output here
-
+	Test	Expected	Got	
+head=NULL;
+push(10.01);
+push(20.02);
+push(30.03);
+display();
+pop();
+printf("\nafter pop ");
+display();
+stack elements:30.03 20.02 10.01
+after pop stack elements:20.02 10.01
+stack elements:30.03 20.02 10.01
+after pop stack elements:20.02 10.01
+head=NULL;
+push(101.01);
+push(201.01);
+push(301.01);
+display();
+pop();
+printf("\nafter pop ");
+display();
+stack elements:301.01 201.01 101.01
+after pop stack elements:201.01 101.01
+stack elements:301.01 201.01 101.01
+after pop stack elements:201.01 101.01
+head=NULL;
+pop();
+stack is empty
+stack is empty
 
 
 Result:
@@ -65,10 +149,61 @@ Algorithm:
 Program:
 
 //type your code here
+struct Node
+{
+   int data;
+   struct Node *next;
+}*front=NULL,*rear=NULL;
+void display()
+{
+    if (front == NULL) {
+        printf("queue is empty\n");
+        return;
+    }
+    
+    struct Node* temp = front;
+    
+    while (temp != NULL) {
+        printf("%d\n", temp->data);
+        temp = temp->next;
+    }
+    
+}
 
 Output:
 
 //paste your output here
+Test	Expected	Got	
+front=NULL;
+rear=NULL;
+enqueue(5);
+enqueue(10);
+enqueue(15);
+display();
+5
+10
+15
+5
+10
+15
+front=NULL;
+rear=NULL;
+enqueue(100);
+enqueue(200);
+enqueue(300);
+display();
+100
+200
+300
+100
+200
+300
+front=NULL;
+rear=NULL;
+display();
+queue is empty
+queue is empty
+
 
 Result:
 Thus, the program to display queue elements using linked list is verified successfully.
@@ -91,10 +226,62 @@ Algorithm:
 Program:
 
 //type your code here
+struct Node
+{
+   float data;
+   struct Node *next;
+}*front=NULL,*rear=NULL;
+void enqueue(float data)
+{
+    struct Node *n=(struct Node*)malloc(sizeof(struct Node));
+    n->data=data;
+    n->next=NULL;
+    if(front==NULL){
+        front=rear=n;
+    }
+    else{
+        rear->next=n;
+        rear=n;
+    }
+}
 
 Output:
 
 //paste your output here
+Test	Expected	Got	
+front=NULL;
+rear=NULL;
+enqueue(1.1);
+enqueue(2.2);
+enqueue(3.3);
+display();
+queue elements:
+1.100
+2.200
+3.300
+queue elements:
+1.100
+2.200
+3.300
+front=NULL;
+rear=NULL;
+enqueue(100.11);
+enqueue(200.11);
+enqueue(300.11);
+display();
+queue elements:
+100.110
+200.110
+300.110
+queue elements:
+100.110
+200.110
+300.110
+front=NULL;
+rear=NULL;
+display();
+queue is empty
+queue is empty
 
 Result:
 Thus, the program to insert elements in queue using linked list is verified successfully.
@@ -118,11 +305,39 @@ o	If the queue is not empty, return the data stored in the front node of the lin
 Program:
 
 //type your code here
+struct Node{
+    char data;
+    struct Node*next;
+    
+}*head;
+void peek(){
+    if(head==NULL){
+        printf("Stack underflow");
+    }
+    else{
+        printf("%c",head->data);
+    }
+}
 
 Output:
 
 //paste your output here
 
+Test	Expected	Got	
+head=NULL;
+push('A');
+push('B');
+push('C');
+peek();
+C
+C
+head=NULL;
+push('a');
+push('b');
+push('c');
+peek();
+c
+c
 
 
 Result:
